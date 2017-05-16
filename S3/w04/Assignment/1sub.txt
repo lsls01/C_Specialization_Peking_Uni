@@ -1,0 +1,9 @@
+Complex & operator = (string s)
+{
+    int pos = s.find("+");
+    string partOne = s.substr(0, pos);
+    string partTwo = s.substr(pos + 1, s.length() - pos - 2);
+    r = atof(partOne.c_str());
+    i = atof(partTwo.c_str());
+    return *this;                                                       
+}

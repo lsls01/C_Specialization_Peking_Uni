@@ -1,0 +1,8 @@
+        int & value()               // & type is assignable
+        {
+                return num;
+        }
+        void operator + (Number & n)    // & type only for small cost
+        {
+            this -> num += n.num;
+        }

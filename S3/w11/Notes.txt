@@ -1,0 +1,6 @@
+New features in c++11
+
+Unified initialisation:
+int arr[3]{1, 2, 3}
+new int[20]{1, 2, 3}
+everything can be initialized by {}

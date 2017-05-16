@@ -1,0 +1,45 @@
+int *pint = new int(1024);  //initial value
+int *pia = new int[4]; 
+delete pint;
+delete []pia;
+
+
+
+Step 1:
+    head = new student;
+    student *temp = head;
+Step 2:
+    Continue?
+    Y:
+        temp -> next = new student;
+        temp = temp -> next;
+        goto Step 2
+    N:
+        temp -> next = NULL;
+
+
+
+student *create()
+{
+    student *head, *temp;
+    int num, n = 0;
+    head = new student;
+    temp = head;
+    cin >> num;
+    
+    while(num != -1)
+    {
+        n++;
+        temp -> id = num;
+        temp -> next = new student;
+        temp = temp -> next;
+        cin >> num;
+    }
+    
+    if(n == 0)
+        head = NULL;
+    else
+        temp -> next = NULL;
+    
+    return head;
+}

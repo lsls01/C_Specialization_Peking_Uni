@@ -1,0 +1,114 @@
+^ operator
+get the opposite bit
+eg: n ^= 0xff
+
+if a ^ b = c
+    c ^ b = a && c ^ a = b
+
+
+
+two's complement representation
+for negative: get the opposite of every bit then plus 1
+
+
+int a = 3, b = 5;
+int &r = a;     //r是从一而终的引用
+r = b;          //不会改变r的引用，只是为它重新赋值
+b = 7;          
+cout << r;;     //r输出5
+
+
+
+the default attribute modifier is private.
+
+
+
+每个new获取的对象，必须用delete析构并释放内存，以免内存泄漏。
+new的对象存储在堆中，堆由程序员分配和释放
+int *p = new int[20];
+delete []p;
+
+
+
+const pointer cannot be assign to non const pointer
+const int *p1;
+int *p2;
+p1 = p2;            //OK
+p2 = p1;            //error
+p2 = (int *) p1;    //OK, explicitly convert type
+
+
+
+inline function
+inline int Max(int a, int b)
+{
+}
+
+
+
+const成员函数内部可以使用this指针，一个const指针，不能改变this的地址以及所指向的值
+
+
+
+一个类，必须有构造函数，要么用户自己定义，要么编译器自动生成。一旦用户自己定义了构造函数，不管它是 public 属性的，还是 private、protected 属性的，编译器都不再自动生成。上面的 Student 类，只有一个构造函数，就是我们自己定义的。
+
+
+
+复制构造函数的三种情况
+（1）当用一个对象去初始化同类的另一个对象
+Complex(const Complex &c)
+Complex c2(c1);     等价于Complex c2 = c1; 此句非赋值语句，而是初始化
+（2）如果某函数有一个参数是类A的对象，那么该函数被调用时，类A的复制构造函数将被调用
+void Func(A a1){}
+int main()
+{
+    A a2;
+    Func(a2);
+    return 0;
+}
+(3)如果函数的返回值是类A的对象时，则函数返回时，A的复制构造函数被调用。
+A Func() {
+    A b(4);
+    return b;
+}
+int main()
+{
+    cout << Func().v << endl;
+    return 0;
+}
+
+
+
+派生类与基类
+– 把派生类对象赋值给基类对象。
+– 把派生类对象的地址赋值给基类指针。
+– 用派生类对象初始化基类对象的引用。
+反之则不可
+derived::derived(arg_derived_list):bae(arg_base_list)
+
+
+
+C++ 类访问控制（public/protected/private）
+2007-08-01 23:41:25
+标签：C++ 访问控制 休闲 public/protected/private 职场
+原创作品，允许转载，转载时请务必以超链接形式标明文章 原始出处 、作者信息和本声明。否则将追究法律责任。http://cnmtjp.blog.51cto.com/204390/36548
+C++中 public，protected， private 访问标号小结
+
+第一：private, public, protected 访问标号的访问范围。
+private：只能由1.该类中的函数、2.其友元函数访问。
+不能被任何其他访问，该类的对象也不能访问。
+
+protected：可以被1.该类中的函数、2.子类的函数、以及3.其友元函数访问。
+但不能被该类的对象访问。
+
+public：可以被1.该类中的函数、2.子类的函数、3.其友元函数访问，也可以由4.该类的对象访问。
+ 
+注：友元函数包括3种：设为友元的普通的非成员函数；设为友元的其他类的成员函数；设为友元类中的所有成员函数。
+
+第二：类的继承后方法属性变化。
+private 属性不能够被继承。
+使用private继承，父类的protected和public属性在子类中变为private；
+使用protected继承，父类的protected和public属性在子类中变为protected；
+使用public继承，父类中的protected和public属性不发生改变; 
+
+protected继承和private继承能降低访问权限。

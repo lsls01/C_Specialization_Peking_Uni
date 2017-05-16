@@ -1,0 +1,18 @@
+class CMy_add
+{
+    private:
+        int &sum;
+    public:
+        CMy_add(int &n): sum(n) {}
+        void operator () (int a)
+        {
+            /*
+            while(a >= 8)
+            {
+                a -= 8;
+            }
+            */
+            a &= 7;
+            sum += a;
+        }
+};

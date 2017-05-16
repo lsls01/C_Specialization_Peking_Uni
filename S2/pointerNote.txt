@@ -1,0 +1,13 @@
+int a[4] = {1, 3, 5, 7};
+cout << a;              0028f7c4
+cout << &a;             0028f7c4
+cout << &a + 1;         0028f7d4
+
+They print the same content with different meaning
+The first one is the first element in a[4], the second one is the whole arraylist.
+
+cout << &a + 1;
+It will print the address after the whole array list.
+
+cout << *(&a);          0028f7c4
+cout << *(&a) + 1;      0028f7c8

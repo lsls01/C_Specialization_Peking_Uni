@@ -1,0 +1,9 @@
+        int operator * (Number &n)
+        {
+            return this -> num * n.num;
+        }
+        // Conversion function cannot have a return type
+        operator int()
+        {
+            return num;
+        }
